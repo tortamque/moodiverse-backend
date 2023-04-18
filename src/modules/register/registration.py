@@ -21,16 +21,13 @@ def register():
     password = request.json.get('password')
     birthdate = request.json.get('birthdate')
 
-    # Check if all fields were provided in json
     if not username or not email or not password or not birthdate:
         return jsonify({'error': 'Missing required fields'}), 400
 
-    # Check if given email or username already exists
     is_exists = check_email_and_username(email, username)
     if is_exists:
         return jsonify({'error': 'User with given email or username already exists'}), 409
 
-    # Hash the password using bcrypt
     hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
 
     add_user_into_db(username, email, hashed_password, birthdate)
