@@ -1,4 +1,4 @@
-Table of contents
+## Table of contents
 -  [API documentation](#api-docs)
     - [Register](#Register)
     - [Login](#Login)
