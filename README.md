@@ -136,7 +136,17 @@ Request Body:
 Response:
 ```js
 {
-    "emojis": ["https://i.imgur.com/1.jpeg", "https://i.imgur.com/2.jpeg", ...]
+    [
+        {
+            "name": "string",
+            "link": "https://i.imgur.com/1.jpeg"
+        },
+        {
+            "name": "string",
+            "link": "https://i.imgur.com/2.jpeg"
+        },
+        ...
+    ]
 }
 ```
 
