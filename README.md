@@ -129,7 +129,8 @@ Request Body:
 ```js
 {
     "mood": "string",
-    "text": "string"
+    "text": "string",
+    "date": 29.04.2023
 }
 ```
 
