@@ -136,18 +136,19 @@ Request Body:
 Response:
 ```js
 {
-    [
+    "moods": [
         {
-            "name": "string",
-            "link": "https://i.imgur.com/1.jpeg"
+            "name": "Happy",
+            "image": "https://i.imgur.com/aidyse5.png"
         },
         {
-            "name": "string",
-            "link": "https://i.imgur.com/2.jpeg"
+            "name": "Melting",
+            "image": "https://i.imgur.com/whXdVTH.png"
         },
         ...
     ]
 }
+
 ```
 
 ---
