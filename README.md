@@ -3,6 +3,7 @@
     - [Register](#Register)
     - [Login](#Login)
     - [Avatar](#Avatar)
+    - [Moods](#Moods)
     - [Create a record](#Create-a-record)
     - [Get a record](#Get-a-record)
     - [Update a record](#Update-a-record)
@@ -81,6 +82,31 @@ Response:
 
 ---
 
+<a name="Moods"/></a>
+### Moods
+Get available moods.
+#### Method: GET
+Endpoint: /moods
+
+Response:
+
+```js
+{
+    "moods": [
+        {
+            "name": "Happy",
+            "image": "https://i.imgur.com/aidyse5.png"
+        },
+        {
+            "name": "Melting",
+            "image": "https://i.imgur.com/whXdVTH.png"
+        },
+        ...
+    ]
+}
+```
+---
+
 <a name="Get-a-record"/></a>
 ### Get a record
 Get a mood record.
@@ -134,22 +160,7 @@ Request Body:
 }
 ```
 
-Response:
-```js
-{
-    "moods": [
-        {
-            "name": "Happy",
-            "image": "https://i.imgur.com/aidyse5.png"
-        },
-        {
-            "name": "Melting",
-            "image": "https://i.imgur.com/whXdVTH.png"
-        },
-        ...
-    ]
-}
-
+Response: None
 ```
 
 ---
@@ -178,7 +189,10 @@ Request Body:
 Response: None
 
 ---
-<a name="Update-user-data"/></a>
+<a name="
+
+
+a"/></a>
 ### Update user data
 #### Method: PUT
 Endpoint: /settings
