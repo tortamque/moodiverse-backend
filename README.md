@@ -169,7 +169,7 @@ Request Header:
 Request Body:
 ```js
 {
-    "newEmoji": "https://i.imgur.com/1.jpeg",
+    "newEmoji": "string",
     "newText": "string",
     "date": "21.01.2023"
 }
