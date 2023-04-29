@@ -130,7 +130,7 @@ Request Body:
 {
     "mood": "string",
     "text": "string",
-    "date": 29.04.2023
+    "date": "29.04.2023"
 }
 ```
 
