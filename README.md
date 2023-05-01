@@ -1,33 +1,40 @@
 ## Table of contents
 -  [API documentation](#api-docs)
-    - [Register](#Register)
-    - [Login](#Login)
-    - [Avatar](#Avatar)
-    - [Moods](#Moods)
-    - [Create a record](#Create-a-record)
-    - [Get a record](#Get-a-record)
-    - [Update a record](#Update-a-record)
-    - [Update user data](#Update-user-data)
-    - [Data deletion](#Data-deletion)
-    - [Get record for a specific date](#Get-record-for-a-specific-date)
-    - [Round statistics](#Round-statistics)
-    - [Tabular statistics](#Tabular-statistics)
+    - [User/Register](#Register)
+    - [User/Login](#Login)
+    - [User/ConfirmPassword](#Confirm-password)
+    - [User/GetUserPersonalData](#Get-user-personal-data)
+    - [User/UpdateUserPersonalDataRequest](#Update-user-personal-data)
+    - [User/UpdateUserPasswordRequest](#Update-user-password)
+    - [User/UpdateUserEmailRequest](#Update-user-password)
+    - [User/Delete](#User-delete)
+    - [Avatars/GetAvatar](#Avatar)
+    - [Avatars/GetRandomAvatar](#Random-avatar)
+    - [Moods/GetMoods](#Moods)
+    - [Records/Create a record](#Create-a-record)
+    - [Records/Get a record](#Get-a-record)
+    - [Records/Update a record](#Update-a-record)
+    - [Records/Get record for a specific date](#Get-record-for-a-specific-date)
+    - [Records/Round statistics](#Round-statistics)
+    - [Records/Tabular statistics](#Tabular-statistics)
+    - [Records/Data deletion](#Data-deletion)
+
 
 <a name="api-docs"/></a>
 ## API documentation
 <a name="Register"/></a>
-### Register
+### User/Register
 Register a new user account.
 #### Method: POST
-Endpoint: /register
+Endpoint: user/register
 
 Request Body:
 ```js
 {
-    "email": "user@example.com",
-    "password": "string",
     "username": "string",
+    "email": "user@example.com",
     "birthdate": "20.12.2000",
+    "password": "string",
     "registrationDate" : "21.04.2023"
 }
 ```
@@ -35,10 +42,10 @@ Response: None
 
 ---
 <a name="Login"/></a>
-### Login
+### User/Login
 Authenticate a user and return a token.
 #### Method: POST
-Endpoint: /login
+Endpoint: user/login
 
 Request Body:
 ```js
@@ -57,8 +64,162 @@ Response:
 ```
 
 ---
-<a name="Avatar"/></a>
-### Avatar
+<a name="Confirm-password"/></a>
+### User/ConfirmPassword
+Confirm user password
+#### Method: POST
+Endpoint: user/confirmPassword
+
+Request Body:
+```js
+{
+    "username": "string",
+    "password": "string"
+}
+```
+
+Response: None
+
+---
+<a name="Get-user-personal-data"/></a>
+### User/Get user personal data
+#### Method: GET
+Endpoint: user/getPersonalData
+
+Request header:
+```js
+{
+  "token": "string"
+}
+```
+
+Request Body:
+None
+
+Response:
+```js
+{
+  "Username": "string",
+  "FirstName": "string",
+  "LastName": "string",
+  "Birthdate": "20.12.2000",
+  "Sex": "string"
+}
+```
+
+---
+<a name="Update-user-personal-data"/></a>
+### User/Update user personal data
+#### Method: PUT
+Endpoint: user/updateUserPersonalDataRequest
+
+Request header:
+```js
+{
+  "token": "string"
+}
+```
+
+Request Body:
+```js
+{
+  "newUsername": "string",
+  "newFirstName": "string",
+  "newLastName": "string",
+  "newBirthdate": "20.12.2000",
+  "newSex": "string"
+}
+```
+
+Response: None
+
+---
+<a name="Update-user-password"/></a>
+### User/Update user password
+#### Method: PUT
+Endpoint: user/updateUserPasswordRequest
+
+Request header:
+```js
+{
+  "token": "string"
+}
+```
+
+Request Body:
+```js
+{
+  "newPassword": "string",
+  "newPassword": "string",
+}
+```
+
+Response: None
+
+---
+<a name="Update-user-email"/></a>
+### User/Update user email
+#### Method: PUT
+Endpoint: user/updateUserEmailRequest
+
+Request header:
+```js
+{
+  "token": "string"
+}
+```
+
+Request Body:
+```js
+{
+  "newEmail": "string",
+}
+```
+
+Response: None
+
+---
+<a name="User-delete"/></a>
+### User deletion
+#### Method: DELETE
+Endpoint: /settings
+
+Request header:
+```js
+{
+  "token": "string"
+}
+```
+Response: None
+
+---
+<a name="Header"/></a>
+### Avatars/Get Avatar
+Get user's avatar and username.
+#### Method: GET
+Endpoint: user/header
+
+Request Header:
+
+```js
+{
+    "token": "string"
+}
+```
+
+Response:
+
+```js
+{
+  avatar: "https://i.imgur.com/dWtx5mc.jpeg"
+  username: "some Tom"
+}
+
+```
+
+---
+<a name="Random-avatar"/></a>
+### Avatars/Get random Avatar and save
 Get user's avatar.
 #### Method: GET
 Endpoint: /avatar
@@ -83,7 +244,7 @@ Response:
 ---
 
 <a name="Moods"/></a>
-### Moods
+### Moods/GetMoods
 Get available moods.
 #### Method: GET
 Endpoint: /moods
@@ -94,11 +255,11 @@ Response:
 {
     "moods": [
         {
-            "name": "Happy",
+            "mood_id": "1",
             "image": "https://i.imgur.com/aidyse5.png"
         },
         {
-            "name": "Melting",
+            "mood_id": "2",
             "image": "https://i.imgur.com/whXdVTH.png"
         },
         ...
@@ -108,7 +269,7 @@ Response:
 ---
 
 <a name="Get-a-record"/></a>
-### Get a record
+### Records/Get a record
 Get a mood record.
 #### Method: GET
 Endpoint: /record
@@ -132,13 +293,14 @@ Response:
 ```js
 {
     "emoji": "https://i.imgur.com/1.jpeg",
-    "text": "string"
+    "text": "string".
+    "date": "12.16.2023"
 }
 ```
 
 ---
 <a name="Create-a-record"/></a>
-### Create a record
+### Records/Create a record
 Add a new mood record.
 #### Method: POST
 Endpoint: /record
@@ -154,18 +316,17 @@ Request Header:
 Request Body:
 ```js
 {
-    "mood": "string",
+    "mood_id": "int",
     "text": "string",
     "date": "29.04.2023"
 }
 ```
 
 Response: None
-```
 
 ---
 <a name="Update-a-record"/></a>
-### Update a record
+### Records/Update a record
 Update an existing mood record.
 #### Method: PUT
 Endpoint: /record
@@ -180,7 +341,7 @@ Request Header:
 Request Body:
 ```js
 {
-    "newEmoji": "string",
+    "newMood_id": "int",
     "newText": "string",
     "date": "21.01.2023"
 }
@@ -189,61 +350,13 @@ Request Body:
 Response: None
 
 ---
-<a name="
-
-
-a"/></a>
-### Update user data
-#### Method: PUT
-Endpoint: /settings
-
-Request header:
-```js
-
-{
-  "token": "string"
-}
-```
-
-Request Body:
-```js
-
-{
-  "newEmail": "user@example.com",
-  "newPassword": "string",
-  "newUsername": "string",
-  "newBirthdate": "20.12.2000",
-  "newFirstName": "string",
-  "newSecondName": "string",
-  "newGender": "string"
-}
-```
-
-Response: None
-
----
-<a name="Data-deletion"/></a>
-### Data deletion
-#### Method: DELETE
-Endpoint: /settings
-
-Request header:
-```js
-{
-  "token": "string"
-}
-```
-Response: None
-
----
 <a name="Get-record-for-a-specific-date"/></a>
-### Get record for a specific date
+### Records/Get record for a specific date
 #### Method: GET
 Endpoint: /calendar
 
 Request header:
 ```js
-
 {
   "token": "string"
 }
@@ -267,7 +380,7 @@ Response:
 
 ---
 <a name="Round-statistics"/></a>
-### Round statistics
+### Records/Round statistics
 #### Method: GET
 Endpoint: /statistics/round
 
@@ -291,28 +404,23 @@ Response:
 {
   "statistics": [
     {
-      "id": "1",
-      "name": "Extremely happy",
+      "Image": "https://i.imgur.com/1.jpeg",
       "count": "12"
     },
     {
-      "id": "2",
-      "name": "Happy",
+      "Image": "https://i.imgur.com/2.jpeg",
       "count": "2"
     },
     {
-      "id": "3",
-      "name": "Neutral",
+      "Image": "https://i.imgur.com/3.jpeg",
       "count": "3"
     },
     {
-      "id": "4",
-      "name": "Sad",
+      "Image": "https://i.imgur.com/4.jpeg",
       "count": "10"
     },
     {
-      "id": "5",
-      "name": "Extremely sad",
+      "Image": "https://i.imgur.com/5.jpeg",
       "count": "4"
     }
   ]
@@ -321,7 +429,7 @@ Response:
 
 ---
 <a name="Tabular-statistics"/></a>
-### Tabular statistics
+### Records/Tabular statistics
 #### Method: GET
 Endpoint: /statistics/table
 
@@ -346,14 +454,26 @@ Response:
  "statistics": [    
          {
            "date": "01.04.2023",
-           "name": "Happy",
-           "image": "https://i.imgur.com/6ogcyVF.png"
+           "points": "1"
          },
          {
            "date": "02.04.2023",
-           "name": "Excited",
-           "image": "https://i.imgur.com/6ogcyVF.png"
+           "points": "5"
          },         
       ],
 }
 ```
+
+---
+<a name="Data-deletion"/></a>
+### Records/Data all records
+#### Method: DELETE
+Endpoint: records/delete
+
+Request header:
+```js
+{
+  "token": "string"
+}
+```
+Response: None
