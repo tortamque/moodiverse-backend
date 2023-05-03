@@ -2,7 +2,6 @@
 -  [API documentation](#api-docs)
     - [User/Register](#Register)
     - [User/Login](#Login)
-    - [User/ConfirmPassword](#Confirm-password)
     - [User/GetUserPersonalData](#Get-user-personal-data)
     - [User/UpdateUserPersonalDataRequest](#Update-user-personal-data)
     - [User/UpdateUserPasswordRequest](#Update-user-password)
@@ -34,7 +33,6 @@ Request Body:
     "email": "user@example.com",
     "birthdate": "20.12.2000",
     "password": "string",
-    "registrationDate" : "21.04.2023"
 }
 ```
 Response: None
@@ -61,23 +59,6 @@ Response:
     "token": "string"
 }
 ```
-
----
-<a name="Confirm-password"/></a>
-### User/ConfirmPassword
-Confirm user password
-#### Method: POST
-Endpoint: user/confirmPassword
-
-Request Body:
-```js
-{
-    "username": "string",
-    "password": "string"
-}
-```
-
-Response: None
 
 ---
 <a name="Get-user-personal-data"/></a>
@@ -148,7 +129,7 @@ Request header:
 Request Body:
 ```js
 {
-  "newPassword": "string",
+  "oldPassword": "string",
   "newPassword": "string",
 }
 ```
@@ -189,8 +170,14 @@ Request header:
   "token": "string"
 }
 ```
-Response: None
 
+Request Body:
+```js
+{
+  "password": "string",
+}
+```
+Response: None
 ---
 <a name="Header"/></a>
 ### Avatars/Get Avatar
@@ -444,6 +431,12 @@ Request header:
 ```js
 {
   "token": "string"
+}
+```
+Request Body:
+```js
+{
+  "password": "string",
 }
 ```
 Response: None
