@@ -14,7 +14,6 @@
     - [Records/Create a record](#Create-a-record)
     - [Records/Get a record](#Get-a-record)
     - [Records/Update a record](#Update-a-record)
-    - [Records/Get record for a specific date](#Get-record-for-a-specific-date)
     - [Records/Round statistics](#Round-statistics)
     - [Records/Tabular statistics](#Tabular-statistics)
     - [Records/Data deletion](#Data-deletion)
@@ -348,35 +347,6 @@ Request Body:
 ```
 
 Response: None
-
----
-<a name="Get-record-for-a-specific-date"/></a>
-### Records/Get record for a specific date
-#### Method: GET
-Endpoint: /calendar
-
-Request header:
-```js
-{
-  "token": "string"
-}
-```
-
-Request body:
-```js
-{
-  "date": "21.01.2023"
-}
-```
-
-Response:
-```js
-{
-  "emoji": "https://i.imgur.com/1.jpeg",
-  "text": "string",
-  "date": "21.01.2023"
-}
-```
 
 ---
 <a name="Round-statistics"/></a>
