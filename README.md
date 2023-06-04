@@ -1,4 +1,21 @@
+## Moodiverse Backend
+Moodiverse is a website for gathering information about your mood and getting statistics about it.
+
 ## Table of contents
+- [Required packages](#Required-packages)
+- [Documentation](#Documentation)
+- [License](#License)
+
+<a name="Required-packages"/></a>
+### Required packages
+| Package | Version | Link |
+| ------ | ------ | ------ |
+| Flask | 2.2.3 | https://pypi.org/project/Flask/ |
+| SQLAlchemy | 2.0.10 | https://pypi.org/project/SQLAlchemy/ |
+| PyJWT  | 2.6.0 | https://pypi.org/project/PyJWT/ |
+
+<a name="Documentation"/></a>
+### Documentation
 -  [API documentation](#api-docs)
     - [User/Register](#Register)
     - [User/Login](#Login)
@@ -440,3 +457,7 @@ Request Body:
 }
 ```
 Response: None
+
+<a name="License"/></a>
+## License
+MIT License
